@@ -5,17 +5,21 @@
 
 using Library::Thing;
 
-class Collision
+namespace Library
 {
-public:
 
-	bool Impact(Thing* thingA, Thing* thingB);
+	class Collision
+	{
+	public:
 
-private:
+		bool Impact(const Thing& left_thing, const Thing& right_thing);
 
-	
+	private:
+
+		FLOAT GetRadius(const Thing& thing);
 
 
-};
+	};
+}
 
 #endif
