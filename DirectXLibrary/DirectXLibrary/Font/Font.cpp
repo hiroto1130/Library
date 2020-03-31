@@ -54,7 +54,7 @@ namespace Library
 			0xff00ff00);            //色
 
 		pDevice->EndScene();
-		pDevice->Present(NULL, NULL, NULL, NULL);
+		//pDevice->Present(NULL, NULL, NULL, NULL);
 
 	}
 

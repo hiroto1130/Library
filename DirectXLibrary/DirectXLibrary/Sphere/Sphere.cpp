@@ -4,11 +4,6 @@
 
 namespace Library
 { 
-	void Sphere::UpDate()
-	{
-
-	}
-
 	//HRESULT InitSphere(LPDIRECT3DDEVICE9 pDevice,THING* pThing)
 	//スフィアの計算およびスフィアを視認可能にするためにスフィアメッシュを作成する
 	HRESULT Sphere::Create(Thing* thing)
@@ -85,9 +80,6 @@ namespace Library
 		LPDIRECT3DDEVICE9 pDevice;
 		Device::GetWindowHandle(&pDevice);
 
-		pDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER,
-			D3DCOLOR_XRGB(100, 100, 100), 1.0f, 0);
-
 		if (SUCCEEDED(pDevice->BeginScene()))
 		{
 			pDevice->SetMaterial(pSphereMeshMaterials);
@@ -96,6 +88,6 @@ namespace Library
 			pDevice->EndScene();
 		}
 
-		pDevice->Present(NULL, NULL, NULL, NULL);
+		
 	}
 }

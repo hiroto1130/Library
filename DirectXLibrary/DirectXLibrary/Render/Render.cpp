@@ -150,9 +150,6 @@ namespace Library
 		LPDIRECT3DDEVICE9 pDevice;
 		Device::GetWindowHandle(&pDevice);
 
-		pDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER,
-			D3DCOLOR_XRGB(100, 100, 100), 1.0f, 0);
-
 		pDevice->BeginScene();
 		
 		for (DWORD i = 0; i < THING_AMOUNT; i++)
@@ -166,7 +163,6 @@ namespace Library
 		
 		pDevice->EndScene();
 
-		pDevice->Present(NULL, NULL, NULL, NULL);
 	}
 
 	void Render::SetLight()

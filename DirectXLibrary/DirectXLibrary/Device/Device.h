@@ -25,6 +25,9 @@ namespace Library
 			pDevice = Device;
 		}
 
+		void Clear();
+		void Present();
+
 	private:
 
 		LPDIRECT3D9 pDirect3d;

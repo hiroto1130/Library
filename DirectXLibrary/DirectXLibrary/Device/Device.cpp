@@ -5,6 +5,17 @@ namespace Library
 
 	LPDIRECT3DDEVICE9 Device::pDevice = nullptr;
 
+	void Device::Clear()
+	{
+		pDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER,
+			D3DCOLOR_XRGB(100, 100, 100), 1.0f, 0);
+	}
+
+	void Device::Present()
+	{
+		pDevice->Present(NULL, NULL, NULL, NULL);
+	}
+
 	HRESULT Device::Initialize()
 	{
 		//// InitD3d が初期化されているかどうか ////

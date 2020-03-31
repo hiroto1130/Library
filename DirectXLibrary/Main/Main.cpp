@@ -6,6 +6,9 @@
 #include "../DirectXLibrary/Device/Input/Key.h"
 #include "../DirectXLibrary/Render/Render.h"
 #include "../DirectXLibrary/Font/Font.h"
+#include "../DirectXLibrary/Sphere/Sphere.h"
+#include "../DirectXLibrary/Collision/Collision.h"
+
 
 using namespace Library;
 using namespace Utility;
@@ -22,12 +25,19 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, int iCmdSh
 	window->Cenerate();
 
 	Render* render = new Render;
-	Thing thing;
+	Thing move_thing;
+	Thing stop_thing;
+
 	Device* device = new Device;
 
-	render->RoadMesh(thing, "Box.x", &D3DXVECTOR3(0, -5, 10));
+	render->RoadMesh(move_thing, "Box.x", &D3DXVECTOR3(0, -5, 10));
+	render->RoadMesh(stop_thing, "Box.x", &D3DXVECTOR3(0, -5, 50));
 
 	Key* key = new Key;
+	Sphere sphere;
+	Font font(60);
+	Collision collision;
+
 
 	while (msg.message != WM_QUIT)
 	{
@@ -38,10 +48,30 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, int iCmdSh
 		}
 		else
 		{
-			key->UpdateKeyStatus();
 
-			render->RenderThing(thing);
+			key->UpdateKeyStatus();
+			device->Clear();
 			
+			render->RenderThing(stop_thing);
+			render->RenderThing(move_thing);
+			
+
+			sphere.Create(&move_thing);
+			sphere.Render();
+
+			
+
+			if(true == collision.Impact(move_thing, stop_thing))
+			{
+				font.Rendering("衝突", 10, 10);
+			}
+			else
+			{
+				font.Rendering("未衝突", 10, 10);
+			}
+
+			device->Present();
+
 			// 前(カメラの移動方向)
 			if (key->IsPressed(DIK_UP) || key->IsHeld(DIK_UP))
 			{
@@ -73,17 +103,17 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, int iCmdSh
 			// 左(物体の移動方向)
 			if (key->IsPressed(DIK_A) || key->IsHeld(DIK_A))
 			{
-				thing.Position.x -= 0.1f;
+				move_thing.Position.x -= 0.1f;
 			}
 			// 右(物体の移動方向)
 			if (key->IsPressed(DIK_D) || key->IsHeld(DIK_D))
 			{
-				thing.Position.x += 0.1f;
+				move_thing.Position.x += 0.1f;
 			}
 			// 前(物体の移動方向)
 			if (key->IsPressed(DIK_W) || key->IsHeld(DIK_W))
 			{
-				thing.Position.z += 0.1f;
+				move_thing.Position.z += 0.1f;
 
 				render->camera.pos.z += 0.1f;
 				render->camera.another_pos.z += 0.1f;
@@ -91,7 +121,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, int iCmdSh
 			// 後(物体の移動方向)
 			if (key->IsPressed(DIK_S) || key->IsHeld(DIK_S))
 			{
-				thing.Position.z -= 0.1f;
+				move_thing.Position.z -= 0.1f;
 
 				render->camera.pos.z -= 0.1f;
 				render->camera.another_pos.z -= 0.1f;

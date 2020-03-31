@@ -4,7 +4,7 @@
 #include<windows.h>
 #include<d3dx9.h>
 
-#include "../../Device/Device.h"
+#include "../Device/Device.h"
 #include "../Render/Render.h"
 
 namespace Library
@@ -15,7 +15,6 @@ namespace Library
 
 		~Sphere() { delete pSphereMeshMaterials; }
 
-		void UpDate();
 		HRESULT Create(Thing* thing);
 		void Render();
 
