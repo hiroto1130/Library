@@ -1,7 +1,9 @@
-#include <windows.h>
+ï»¿#include <windows.h>
 #include <d3d9.h>
 
-#include "../DirectXLibrary/Winodw/Window.h"
+#include <crtdbg.h>
+
+#include "../DirectXLibrary/Window/Window.h"
 #include "../DirectXLibrary/Device/Device.h"
 #include "../DirectXLibrary/Device/Input/Key.h"
 #include "../DirectXLibrary/Render/Render.h"
@@ -16,13 +18,17 @@ using namespace Utility;
 
 int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, int iCmdShow)
 {
+
+	// ãƒ¡ãƒ¢ãƒªãƒªãƒ¼ã‚¯æ¤œå‡º
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+
 	MSG msg;
 	ZeroMemory(&msg, sizeof(msg));
 
 	Window* window = new Window("Test");
-	WindowParameter::SetRectSize(RectSize{640,480});
+	WindowParameter::SetRectSize(RectSize{ 640,480 });
 
-	window->Cenerate();
+	window->Create();
 
 	Render* render = new Render;
 	Thing move_thing;
@@ -38,7 +44,6 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, int iCmdSh
 	Font font(60);
 	Collision collision;
 
-
 	while (msg.message != WM_QUIT)
 	{
 		if (PeekMessage(&msg, NULL, 0U, 0U, PM_REMOVE))
@@ -51,66 +56,64 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, int iCmdSh
 
 			key->UpdateKeyStatus();
 			device->Clear();
-			
+
 			render->RenderThing(stop_thing);
 			render->RenderThing(move_thing);
-			
+
 
 			sphere.Create(&move_thing);
 			sphere.Render();
 
-			
-
-			if(true == collision.Impact(move_thing, stop_thing))
+			if (true == collision.Impact(move_thing, stop_thing))
 			{
-				font.Rendering("Õ“Ë", 10, 10);
+				font.Rendering("è¡çª", 10, 10);
 			}
 			else
 			{
-				font.Rendering("–¢Õ“Ë", 10, 10);
+				font.Rendering("æœªè¡çª", 10, 10);
 			}
 
 			device->Present();
 
-			// ‘O(ƒJƒƒ‰‚ÌˆÚ“®•ûŒü)
+			// å‰(ã‚«ãƒ¡ãƒ©ã®ç§»å‹•æ–¹å‘)
 			if (key->IsPressed(DIK_UP) || key->IsHeld(DIK_UP))
 			{
 				render->camera.pos.y -= 0.1f;
 				render->camera.another_pos.y -= 0.1f;
 			}
 
-			// Œã‚ë(ƒJƒƒ‰‚ÌˆÚ“®•ûŒü)
+			// å¾Œã‚(ã‚«ãƒ¡ãƒ©ã®ç§»å‹•æ–¹å‘)
 			if (key->IsPressed(DIK_DOWN) || key->IsHeld(DIK_DOWN))
 			{
 				render->camera.pos.y += 0.1f;
 				render->camera.another_pos.y += 0.1f;
 			}
 
-			// ‰E(ƒJƒƒ‰‚ÌˆÚ“®•ûŒü)
+			// å³(ã‚«ãƒ¡ãƒ©ã®ç§»å‹•æ–¹å‘)
 			if (key->IsPressed(DIK_RIGHT) || key->IsHeld(DIK_RIGHT))
 			{
 				render->camera.pos.x += 0.1f;
 				render->camera.another_pos.x += 0.1f;
 			}
 
-			// ¶(ƒJƒƒ‰‚ÌˆÚ“®•ûŒü)
+			// å·¦(ã‚«ãƒ¡ãƒ©ã®ç§»å‹•æ–¹å‘)
 			if (key->IsPressed(DIK_LEFT) || key->IsHeld(DIK_LEFT))
 			{
 				render->camera.pos.x -= 0.1f;
 				render->camera.another_pos.x -= 0.1f;
 			}
 
-			// ¶(•¨‘Ì‚ÌˆÚ“®•ûŒü)
+			// å·¦(ç‰©ä½“ã®ç§»å‹•æ–¹å‘)
 			if (key->IsPressed(DIK_A) || key->IsHeld(DIK_A))
 			{
 				move_thing.Position.x -= 0.1f;
 			}
-			// ‰E(•¨‘Ì‚ÌˆÚ“®•ûŒü)
+			// å³(ç‰©ä½“ã®ç§»å‹•æ–¹å‘)
 			if (key->IsPressed(DIK_D) || key->IsHeld(DIK_D))
 			{
 				move_thing.Position.x += 0.1f;
 			}
-			// ‘O(•¨‘Ì‚ÌˆÚ“®•ûŒü)
+			// å‰(ç‰©ä½“ã®ç§»å‹•æ–¹å‘)
 			if (key->IsPressed(DIK_W) || key->IsHeld(DIK_W))
 			{
 				move_thing.Position.z += 0.1f;
@@ -118,7 +121,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, int iCmdSh
 				render->camera.pos.z += 0.1f;
 				render->camera.another_pos.z += 0.1f;
 			}
-			// Œã(•¨‘Ì‚ÌˆÚ“®•ûŒü)
+			// å¾Œ(ç‰©ä½“ã®ç§»å‹•æ–¹å‘)
 			if (key->IsPressed(DIK_S) || key->IsHeld(DIK_S))
 			{
 				move_thing.Position.z -= 0.1f;
@@ -126,11 +129,14 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, int iCmdSh
 				render->camera.pos.z -= 0.1f;
 				render->camera.another_pos.z -= 0.1f;
 			}
-			
+
 		}
 	}
 
+
 	delete window;
+	delete render;
+	delete device;
 	delete key;
 
 	return (INT)msg.wParam;
