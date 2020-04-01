@@ -1,5 +1,5 @@
-﻿#ifndef SPHERE_H
-#define SPHERE_H
+﻿#ifndef BOX_H
+#define BOX_H
 
 #include<windows.h>
 #include<d3dx9.h>
@@ -9,20 +9,27 @@
 
 namespace Library
 {
-	class Sphere
+	struct BBOX
+	{
+		D3DXVECTOR3 vecMax;
+		D3DXVECTOR3 vecMin;
+	};
+
+	class Box
 	{
 	public:
 
-		~Sphere() { delete pSphereMeshMaterials; }
+		~Box() { delete pBBoxMeshMaterials; }
 
 		HRESULT Create(Thing* thing);
 		void Render();
 
 	private:
 
-		D3DMATERIAL9* pSphereMeshMaterials = nullptr;
-		LPD3DXMESH pSphereMesh = nullptr;
+		D3DMATERIAL9* pBBoxMeshMaterials = nullptr;
+		LPD3DXMESH pBBoxMesh = nullptr;
 
+		BBOX box;
 		D3DXVECTOR3 Center;
 		float Radius = 0;
 	};

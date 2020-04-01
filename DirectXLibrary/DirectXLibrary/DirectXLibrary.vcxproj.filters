@@ -30,6 +30,9 @@
     <Filter Include="Sphere">
       <UniqueIdentifier>{384cd460-8fd0-4ec2-b24c-9f32cdf3febc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Box">
+      <UniqueIdentifier>{9d57f62f-a396-4d15-bfa8-3e877bea4dda}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Device\Device.h">
@@ -71,6 +74,9 @@
     <ClInclude Include="Window\Window.h">
       <Filter>Window</Filter>
     </ClInclude>
+    <ClInclude Include="Box\Box.h">
+      <Filter>Box</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Device\Device.cpp">
@@ -96,6 +102,9 @@
     </ClCompile>
     <ClCompile Include="Window\Window.cpp">
       <Filter>Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Box\Box.cpp">
+      <Filter>Box</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

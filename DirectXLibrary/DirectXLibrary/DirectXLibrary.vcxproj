@@ -140,6 +140,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Box\Box.cpp" />
     <ClCompile Include="Collision\Collision.cpp" />
     <ClCompile Include="Device\Device.cpp" />
     <ClCompile Include="Device\Input\Key.cpp" />
@@ -150,6 +151,7 @@
     <ClCompile Include="Window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Box\Box.h" />
     <ClInclude Include="Collision\Collision.h" />
     <ClInclude Include="Device\Device.h" />
     <ClInclude Include="Device\Input\Key.h" />
