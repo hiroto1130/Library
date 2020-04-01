@@ -48,7 +48,7 @@ namespace Library
 
 		// 得られた中心と半径を基にメッシュとしてのスフィアを作成する
 		LPDIRECT3DDEVICE9 pDevice;
-		Device::GetWindowHandle(&pDevice);
+		Device::GetDevice(&pDevice);
 
 		hr = D3DXCreateSphere(pDevice, radius, 24, 24, &pSphereMesh, NULL);
 		if (FAILED(hr))
@@ -78,7 +78,7 @@ namespace Library
 	{
 
 		LPDIRECT3DDEVICE9 pDevice;
-		Device::GetWindowHandle(&pDevice);
+		Device::GetDevice(&pDevice);
 
 		if (SUCCEEDED(pDevice->BeginScene()))
 		{

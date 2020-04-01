@@ -14,7 +14,7 @@ namespace Library
 
 		//文字列フォントの設定
 		LPDIRECT3DDEVICE9 pDevice;
-		Device::GetWindowHandle(&pDevice);
+		Device::GetDevice(&pDevice);
 
 		if (FAILED(D3DXCreateFont(pDevice, font_size, font_size / 2, FW_BOLD, NULL, FALSE,
 			SHIFTJIS_CHARSET, OUT_DEFAULT_PRECIS, PROOF_QUALITY, FIXED_PITCH | FF_MODERN,
@@ -31,7 +31,7 @@ namespace Library
 		RECT rect = { iX, iY, 0, 0 }; //表示領域
 
 		LPDIRECT3DDEVICE9 pDevice;
-		Device::GetWindowHandle(&pDevice);
+		Device::GetDevice(&pDevice);
 
 		pDevice->BeginScene();
 

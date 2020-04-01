@@ -30,7 +30,7 @@ namespace Library
 		D3DXMatrixMultiply(&WorldMatrix, &WorldMatrix, &ScaleMatrix);
 
 		LPDIRECT3DDEVICE9 pDevice;
-		Device::GetWindowHandle(&pDevice);
+		Device::GetDevice(&pDevice);
 		pDevice->SetTransform(D3DTS_WORLD, &WorldMatrix);
 	}
 
@@ -68,7 +68,7 @@ namespace Library
 		D3DXMatrixMultiply(&ViewMatrix, &ViewMatrix, &CameraPositionMatrix);
 
 		LPDIRECT3DDEVICE9 pDevice;
-		Device::GetWindowHandle(&pDevice);
+		Device::GetDevice(&pDevice);
 
 		pDevice->SetTransform(D3DTS_VIEW, &ViewMatrix);
 	}
@@ -80,7 +80,7 @@ namespace Library
 		D3DXMatrixPerspectiveFovLH(&ProjectionMatrix, D3DX_PI / camera.Perspective, 1.0f, 1.0f, 100.0f);
 
 		LPDIRECT3DDEVICE9 pDevice;
-		Device::GetWindowHandle(&pDevice);
+		Device::GetDevice(&pDevice);
 
 		pDevice->SetTransform(D3DTS_PROJECTION, &ProjectionMatrix);
 	}
@@ -89,7 +89,7 @@ namespace Library
 	{
 
 		LPDIRECT3DDEVICE9 pDevice;
-		Device::GetWindowHandle(&pDevice);
+		Device::GetDevice(&pDevice);
 
 		for (DWORD i = 0; i < thing.dwNumMaterials; i++)
 		{
@@ -99,7 +99,7 @@ namespace Library
 		}
 	}
 
-	bool Render::RoadMesh(Thing& thing, LPCSTR file_name, D3DXVECTOR3* pvecPosition)
+	bool Render::RoadMesh(Thing& thing, LPCTSTR file_name, D3DXVECTOR3* pvecPosition)
 	{
 		// メッシュの初期位置
 		memcpy(&thing.Position, pvecPosition, sizeof(D3DXVECTOR3));
@@ -108,7 +108,7 @@ namespace Library
 		LPD3DXBUFFER pD3DXMtrlBuffer = NULL;
 		
 		LPDIRECT3DDEVICE9 pDevice;
-		Device::GetWindowHandle(&pDevice);
+		Device::GetDevice(&pDevice);
 
 		if (FAILED(D3DXLoadMeshFromX(file_name, D3DXMESH_SYSTEMMEM,
 			pDevice, NULL, &pD3DXMtrlBuffer, NULL,
@@ -148,7 +148,7 @@ namespace Library
 	{
 
 		LPDIRECT3DDEVICE9 pDevice;
-		Device::GetWindowHandle(&pDevice);
+		Device::GetDevice(&pDevice);
 
 		pDevice->BeginScene();
 		
@@ -180,7 +180,7 @@ namespace Library
 		light.Range = 200.0f;
 
 		LPDIRECT3DDEVICE9 pDevice;
-		Device::GetWindowHandle(&pDevice);
+		Device::GetDevice(&pDevice);
 
 		pDevice->SetLight(0, &light);
 		pDevice->LightEnable(0, TRUE);

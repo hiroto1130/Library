@@ -5,6 +5,29 @@ namespace Library
 
 	LPDIRECT3DDEVICE9 Device::pDevice = nullptr;
 
+	bool Device::DrawStart()
+	{
+		pDevice->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0x00, 0x00, 0x00), 1.0f, 0);
+
+		pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, true);
+		pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
+		pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
+
+		if (D3D_OK == pDevice->BeginScene())
+		{
+			return true;
+		}
+
+		return false;
+	}
+
+	void Device::DrawEnd()
+	{
+		pDevice->EndScene();
+		pDevice->Present(NULL, NULL, NULL, NULL);
+	}
+
+
 	void Device::Clear()
 	{
 		pDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER,
@@ -37,7 +60,6 @@ namespace Library
 
 
 		//// InitDinput 初期化されているかどうか ////
-		HRESULT result;
 		if (S_OK != pDirect3d->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd,
 			D3DCREATE_MIXED_VERTEXPROCESSING, &d3dpp, &pDevice))
 		{

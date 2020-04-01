@@ -4,7 +4,7 @@
 #include <windows.h>
 #include <d3d9.h>
 
-#include "../Winodw/Window.h"
+#include "../Window/Window.h"
 
 namespace Library
 {
@@ -15,17 +15,22 @@ namespace Library
 		Device() { Initialize(); }
 		virtual ~Device() {}
 
-		static inline void GetWindowHandle(LPDIRECT3DDEVICE9* Device)
+		static inline void GetDevice(LPDIRECT3DDEVICE9* Device)
 		{
 			*Device = pDevice;
 		}
 
-		static inline void SetWindowHandle(const LPDIRECT3DDEVICE9& Device)
+		static inline void SetDevice(const LPDIRECT3DDEVICE9& Device)
 		{
 			pDevice = Device;
 		}
 
+		bool DrawStart();
+
+		void DrawEnd();
+
 		void Clear();
+
 		void Present();
 
 	private:

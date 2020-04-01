@@ -22,7 +22,7 @@ namespace Library
 		};
 
 		LPDIRECT3DDEVICE9 pDevice;
-		Device::GetWindowHandle(&pDevice);
+		Device::GetDevice(&pDevice);
 
 		pDevice->SetFVF(D3DFVF_XYZRHW | D3DFVF_TEX1);
 		pDevice->SetTexture(0,texture_data.m_pTexture);
@@ -34,7 +34,7 @@ namespace Library
 	void Texture::Load(const char* file_name, LPDIRECT3DTEXTURE9* Texture)
 	{
 		LPDIRECT3DDEVICE9 pDevice;
-		Device::GetWindowHandle(&pDevice);
+		Device::GetDevice(&pDevice);
 
 		HRESULT result = D3DXCreateTextureFromFile(pDevice, file_name, Texture);
 
@@ -91,7 +91,7 @@ namespace Library
 		};
 
 		LPDIRECT3DDEVICE9 pDevice;
-		Device::GetWindowHandle(&pDevice);
+		Device::GetDevice(&pDevice);
 
 		pDevice->SetFVF(D3DFVF_XYZRHW | D3DFVF_TEX1);
 		pDevice->SetTexture(0, map_chip_data.m_pTexture);
