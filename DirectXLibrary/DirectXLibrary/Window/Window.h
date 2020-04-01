@@ -61,7 +61,7 @@ namespace Library
 			Initialize(window_name);
 		}
 
-		BOOL Cenerate();
+		BOOL Create();
 
 	private:
 

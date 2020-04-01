@@ -31,7 +31,7 @@ namespace Library
 
 	}
 
-	BOOL Window::Cenerate()
+	BOOL Window::Create()
 	{
 		HWND hWnd = nullptr;
 		WindowParameter::GetWindowHandle(&hWnd);

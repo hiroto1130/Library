@@ -147,7 +147,7 @@
     <ClCompile Include="Graphic\Graphic.cpp" />
     <ClCompile Include="Render\Render.cpp" />
     <ClCompile Include="Sphere\Sphere.cpp" />
-    <ClCompile Include="Winodw\Window.cpp" />
+    <ClCompile Include="Window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h" />
@@ -157,11 +157,12 @@
     <ClInclude Include="Graphic\Graphic.h" />
     <ClInclude Include="Render\Render.h" />
     <ClInclude Include="Sphere\Sphere.h" />
+    <ClInclude Include="Utility\.h" />
     <ClInclude Include="Utility\Matrix.h" />
     <ClInclude Include="Utility\Position.h" />
     <ClInclude Include="Utility\RectSize.h" />
     <ClInclude Include="Utility\Uv.h" />
-    <ClInclude Include="Winodw\Window.h" />
+    <ClInclude Include="Window\Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

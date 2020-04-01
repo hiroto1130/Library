@@ -32,9 +32,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Winodw\Window.h">
-      <Filter>Window</Filter>
-    </ClInclude>
     <ClInclude Include="Device\Device.h">
       <Filter>Device</Filter>
     </ClInclude>
@@ -68,11 +65,14 @@
     <ClInclude Include="Sphere\Sphere.h">
       <Filter>Sphere</Filter>
     </ClInclude>
+    <ClInclude Include="Utility\.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Window\Window.h">
+      <Filter>Window</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Winodw\Window.cpp">
-      <Filter>Window</Filter>
-    </ClCompile>
     <ClCompile Include="Device\Device.cpp">
       <Filter>Device</Filter>
     </ClCompile>
@@ -93,6 +93,9 @@
     </ClCompile>
     <ClCompile Include="Sphere\Sphere.cpp">
       <Filter>Sphere</Filter>
+    </ClCompile>
+    <ClCompile Include="Window\Window.cpp">
+      <Filter>Window</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
