@@ -3,6 +3,7 @@
 
 #include <crtdbg.h>
 
+
 #include "../DirectXLibrary/Window/Window.h"
 #include "../DirectXLibrary/Device/Device.h"
 #include "../DirectXLibrary/Device/Input/Key.h"
@@ -10,7 +11,7 @@
 #include "../DirectXLibrary/Font/Font.h"
 #include "../DirectXLibrary/Sphere/Sphere.h"
 #include "../DirectXLibrary/Collision/Collision.h"
-
+#include "../DirectXLibrary/Utility/MemoryLeak.h"
 
 using namespace Library;
 using namespace Utility;
@@ -35,9 +36,9 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, int iCmdSh
 	Thing stop_thing;
 
 	Device* device = new Device;
-
-	render->RoadMesh(move_thing, "Box.x", &D3DXVECTOR3(0, -5, 10));
-	render->RoadMesh(stop_thing, "Box.x", &D3DXVECTOR3(0, -5, 50));
+	
+	render->LoadMesh(move_thing, "Box.x", &D3DXVECTOR3(0, -5, 10));
+	render->LoadMesh(stop_thing, "Box.x", &D3DXVECTOR3(0, -5, 50));
 
 	Key* key = new Key;
 	Sphere sphere;
@@ -64,7 +65,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, int iCmdSh
 			sphere.Create(&move_thing);
 			sphere.Render();
 
-			if (true == collision.Impact(move_thing, stop_thing))
+			if (true == collision.Sphere(move_thing, stop_thing))
 			{
 				font.Rendering("衝突", 10, 10);
 			}

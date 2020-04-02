@@ -99,7 +99,7 @@ namespace Library
 		}
 	}
 
-	bool Render::MeshRoad(Thing& thing, LPCSTR file_name, D3DXVECTOR3* pvecPosition)
+	bool Render::LoadMesh(Thing& thing, LPCSTR file_name, D3DXVECTOR3* pvecPosition)
 	{
 		// メッシュの初期位置
 		memcpy(&thing.Position, pvecPosition, sizeof(D3DXVECTOR3));
