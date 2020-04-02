@@ -99,7 +99,7 @@ namespace Library
 		}
 	}
 
-	bool Render::RoadMesh(Thing& thing, LPCTSTR file_name, D3DXVECTOR3* pvecPosition)
+	bool Render::MeshRoad(Thing& thing, LPCSTR file_name, D3DXVECTOR3* pvecPosition)
 	{
 		// メッシュの初期位置
 		memcpy(&thing.Position, pvecPosition, sizeof(D3DXVECTOR3));
@@ -110,7 +110,7 @@ namespace Library
 		LPDIRECT3DDEVICE9 pDevice;
 		Device::GetDevice(&pDevice);
 
-		if (FAILED(D3DXLoadMeshFromX(file_name, D3DXMESH_SYSTEMMEM,
+		if (FAILED(D3DXLoadMeshFromXA(file_name, D3DXMESH_SYSTEMMEM,
 			pDevice, NULL, &pD3DXMtrlBuffer, NULL,
 			&thing.dwNumMaterials, &thing.pMesh)))
 		{

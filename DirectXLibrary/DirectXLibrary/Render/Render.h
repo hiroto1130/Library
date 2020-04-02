@@ -69,7 +69,7 @@ namespace Library
 	{
 	public:
 
-		bool RoadMesh(Thing& thing, LPCTSTR file_name, D3DXVECTOR3* pvecPosition);
+		bool MeshRoad(Thing& thing, LPCSTR file_name, D3DXVECTOR3* pvecPosition);
 
 		void RenderThing(Thing& thing);
 
