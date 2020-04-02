@@ -3,7 +3,7 @@
 
 namespace Utility
 {
-	class RectSize
+	struct RectSize
 	{
 	public:
 
