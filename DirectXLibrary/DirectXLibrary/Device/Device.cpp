@@ -50,8 +50,9 @@ namespace Library
 		{
 			return E_FAIL;
 		}
-
 		D3DPRESENT_PARAMETERS d3dpp;
+		ZeroMemory(&d3dpp, sizeof(d3dpp));
+		
 		d3dpp.BackBufferFormat = D3DFMT_UNKNOWN;
 		d3dpp.BackBufferCount = 1;
 		d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;
