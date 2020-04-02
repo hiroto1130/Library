@@ -16,7 +16,10 @@ namespace Library
 
 		static inline void GetInstanceHandle(HINSTANCE* pHInstance)
 		{
-			*pHInstance = hInst;
+			if (hInst != nullptr)
+			{
+				*pHInstance = hInst;
+			}
 		}
 
 		static inline void SetInstanceHandle(const HINSTANCE& hInstance)
@@ -26,7 +29,10 @@ namespace Library
 
 		static inline void GetWindowHandle(HWND* hwnd)
 		{
-			*hwnd = hWnd;
+			if (hWnd != nullptr)
+			{
+				*hwnd = hWnd;
+			}
 		}
 
 		static inline void SetWindowHandle(const HWND& hwnd)

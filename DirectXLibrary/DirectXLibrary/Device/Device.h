@@ -17,7 +17,10 @@ namespace Library
 
 		static inline void GetDevice(LPDIRECT3DDEVICE9* Device)
 		{
-			*Device = pDevice;
+			if (pDevice != nullptr)
+			{
+				*Device = pDevice;
+			}
 		}
 
 		static inline void SetDevice(const LPDIRECT3DDEVICE9& Device)
