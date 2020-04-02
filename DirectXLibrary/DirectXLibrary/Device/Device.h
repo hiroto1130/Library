@@ -40,7 +40,6 @@ namespace Library
 
 		LPDIRECT3D9 pDirect3d;
 		static LPDIRECT3DDEVICE9 pDevice;
-		D3DPRESENT_PARAMETERS d3dpp;
 
 		HRESULT Initialize();
 
