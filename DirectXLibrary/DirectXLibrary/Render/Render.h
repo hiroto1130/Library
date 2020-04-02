@@ -13,7 +13,7 @@
 #include "../Device/Device.h"
 
 using Utility::Position;
-using Utility::RotationMatrix;
+using Utility::Rotation;
 
 namespace Library
 {
@@ -40,7 +40,7 @@ namespace Library
 		D3DXVECTOR3 Position;
 
 		//! 回転変数
-		RotationMatrix rotation_matrix{ 0,0,0 };
+		Rotation rotation_matrix{ 0,0,0 };
 
 		//! 大きさの変数
 		float scale = 1.0f;
@@ -56,7 +56,7 @@ namespace Library
 
 		Position another_pos{ 0.0f,0.0f,0.0f };
 
-		RotationMatrix rotation_matrix{ 0,0,0 };
+		Rotation rotation_matrix{ 0,0,0 };
 
 		float Perspective = 4;
 
@@ -69,7 +69,7 @@ namespace Library
 	{
 	public:
 
-		bool RoadMesh(Thing& thing, LPCSTR file_name, D3DXVECTOR3* pvecPosition);
+		bool RoadMesh(Thing& thing, LPCTSTR file_name, D3DXVECTOR3* pvecPosition);
 
 		void RenderThing(Thing& thing);
 

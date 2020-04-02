@@ -3,9 +3,9 @@
 
 namespace Utility
 {
-	struct RotationMatrix
+	struct Rotation
 	{
-		RotationMatrix(float Yaw,float Pitch,float Roll):yaw(Yaw),pitch(Pitch),roll(Roll) {}
+		Rotation(float Yaw,float Pitch,float Roll):yaw(Yaw),pitch(Pitch),roll(Roll) {}
 
 		float yaw;
 		float pitch;
