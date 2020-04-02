@@ -3,7 +3,6 @@
 
 #include <crtdbg.h>
 
-
 #include "../DirectXLibrary/Window/Window.h"
 #include "../DirectXLibrary/Device/Device.h"
 #include "../DirectXLibrary/Device/Input/Key.h"
@@ -11,7 +10,6 @@
 #include "../DirectXLibrary/Font/Font.h"
 #include "../DirectXLibrary/Sphere/Sphere.h"
 #include "../DirectXLibrary/Collision/Collision.h"
-#include "../DirectXLibrary/Utility/MemoryLeak.h"
 
 using namespace Library;
 using namespace Utility;
@@ -41,7 +39,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, int iCmdSh
 	render->LoadMesh(stop_thing, "Box.x", &D3DXVECTOR3(0, -5, 50));
 
 	Key* key = new Key;
-	Sphere sphere;
+	Sphere* sphere = new Sphere;
 	Font font(60);
 	Collision collision;
 
@@ -62,8 +60,8 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, int iCmdSh
 			render->RenderThing(move_thing);
 
 
-			sphere.Create(&move_thing);
-			sphere.Render();
+			sphere->Create(&move_thing);
+			sphere->Render();
 
 			if (true == collision.Sphere(move_thing, stop_thing))
 			{
@@ -139,6 +137,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, int iCmdSh
 	delete render;
 	delete device;
 	delete key;
+	delete sphere;
 
 	return (INT)msg.wParam;
 

@@ -1,5 +1,11 @@
 ﻿#include "Render.h"
 
+#if _DEBUG
+#define _CRTDBG_MAP_ALLOC
+#include <crtdbg.h>
+#define new new(_NORMAL_BLOCK, __FILE__, __LINE__)
+#endif
+
 namespace Library
 {
 
@@ -120,8 +126,15 @@ namespace Library
 
 		D3DXMATERIAL* d3dxMaterials = (D3DXMATERIAL*)pD3DXMtrlBuffer->GetBufferPointer();
 
-		thing.pMeshMaterials = new D3DMATERIAL9[thing.dwNumMaterials];
-		thing.pMeshTextures = new LPDIRECT3DTEXTURE9[thing.dwNumMaterials];
+		if (thing.pMeshMaterials == nullptr)
+		{
+			thing.pMeshMaterials = new D3DMATERIAL9[thing.dwNumMaterials];
+		}
+
+		if (thing.pMeshTextures == nullptr)
+		{
+			thing.pMeshTextures = new LPDIRECT3DTEXTURE9[thing.dwNumMaterials];
+		}
 
 		for (DWORD i = 0; i < thing.dwNumMaterials; i++)
 		{

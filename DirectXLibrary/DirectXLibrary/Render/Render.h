@@ -29,11 +29,12 @@ namespace Library
 		~Thing()
 		{
 			delete pMeshMaterials;
+			delete pMeshTextures;
 		}
 
 		LPD3DXMESH pMesh;
 		D3DMATERIAL9* pMeshMaterials = nullptr;
-		LPDIRECT3DTEXTURE9* pMeshTextures;
+		LPDIRECT3DTEXTURE9* pMeshTextures = nullptr;
 		DWORD dwNumMaterials;
 
 		//! 移動変数

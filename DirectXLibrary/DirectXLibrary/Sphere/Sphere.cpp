@@ -1,6 +1,10 @@
 ﻿#include "Sphere.h"
 
-
+#if _DEBUG
+#define _CRTDBG_MAP_ALLOC
+#include <crtdbg.h>
+#define new new(_NORMAL_BLOCK, __FILE__, __LINE__)
+#endif
 
 namespace Library
 { 
@@ -57,7 +61,12 @@ namespace Library
 		}
 
 		//スフィアメッシュのマテリアル　白色、半透明、光沢強
-		pSphereMeshMaterials = new D3DMATERIAL9;
+		
+		if (pSphereMeshMaterials == nullptr)
+		{
+			pSphereMeshMaterials = new D3DMATERIAL9;
+		}
+		
 		pSphereMeshMaterials->Diffuse.r = 1.0f;
 		pSphereMeshMaterials->Diffuse.g = 1.0f;
 		pSphereMeshMaterials->Diffuse.b = 1.0f;
